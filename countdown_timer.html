@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+div {
+	margin: 0 auto;
+	text-align: center;
+	width: 500px;
+}
+p {
+	float: left;
+	border: 1px solid #A9A9A9;
+	font-size: 30px;
+	padding: 10px 20px 20px 20px; 	
+	width: 55px;
+	height: 50px;
+	margin-right: 10px;
+	border-radius: 5px;
+}
+span {
+	color: #A9A9A9;
+	font-size: 15px;
+	float: left;
+	width: 100%;
+}
+</style>
+<script>
+// The date to compare
+var DateToCompare = new Date("June 14, 2018").getTime();
+
+// Update the count down every 1 second
+var app = setInterval(function() {
+
+    // Today's date
+    var now = new Date().getTime();
+    
+    // Find the dateResult between now an the count down date
+    var dateResult = DateToCompare - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(dateResult / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((dateResult % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((dateResult % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((dateResult % (1000 * 60)) / 1000);
+    
+    // the result here
+    document.getElementById("days").innerHTML = days + "<span class='txt'> Days </span>";
+    document.getElementById("hours").innerHTML = hours + "<span class='txt'> Hours </span>";
+    document.getElementById("minutes").innerHTML = minutes + "<span class='txt'> Minutes </span>";
+    document.getElementById("seconds").innerHTML = seconds + "<span class='txt'> Seconds </span>";
+    
+    // If the count down is over, write some text 
+    if (dateResult < 0) {
+        clearInterval(app);
+        document.getElementById("countdown_wrapper").innerHTML = "EXPIRED";
+    }
+}, 1000);
+</script>
+</head>
+<body>
+
+<div id="countdown_wrapper">
+<p id="days"></p>
+<p id="hours"></p>
+<p id="minutes"></p>
+<p id="seconds"></p>
+</div>
+
+
+
+</body>
+</html>
